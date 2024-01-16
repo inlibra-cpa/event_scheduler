@@ -4,12 +4,18 @@
       <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
       <ul>
-        <% event.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
+
+  <!-- Calendar Select Box -->
+  <div>
+    <%= form.label :calendar_id, style: "display: block" %>
+    <%= form.collection_select :calendar_id, @calendars, :id, :name, { include_blank: 'Select Calendar' }, { required: true } %>
+  </div>
 
   <div>
     <%= form.label :title, style: "display: block" %>

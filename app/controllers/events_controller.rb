@@ -13,6 +13,7 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    @calendars = Calendar.all
   end
 
   # GET /events/1/edit
@@ -65,6 +66,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:title, :date, :description)
+      params.require(:event).permit(:title, :date, :description, :calendar_id)
     end
 end

@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event: one
+  remind_at: 2024-01-16 13:44:26
+  message: MyText
+
+two:
+  event: two
+  remind_at: 2024-01-16 13:44:26
+  message: MyText
