@@ -1,0 +1,4 @@
+reminder_job:
+  cron: '*/10 * * * *'   # Runs every 10 minutes
+  class: ReminderJob
+  queue: default

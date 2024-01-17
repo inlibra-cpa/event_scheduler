@@ -8,6 +8,10 @@ class RemindersController < ApplicationController
 
   # GET /reminders/1 or /reminders/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @event }
+    end
   end
 
   # GET /reminders/new
