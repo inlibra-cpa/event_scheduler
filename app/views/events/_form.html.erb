@@ -12,9 +12,17 @@
   <% end %>
 
   <!-- Calendar Select Box -->
+  <%= form.check_box :set_reminder %>
+  <%= form.label :set_reminder, "Set a reminder" %>
+
+  <div id="reminder_fields" style="display: none;">
+    <%= form.label :reminder_lead_time, "Reminder lead time (minutes)" %>
+    <%= form.number_field :reminder_lead_time, in: 5..1440, step: 5 %>
+  </div>
+
   <div>
     <%= form.label :calendar_id, style: "display: block" %>
-    <%= form.collection_select :calendar_id, @calendars, :id, :name, { include_blank: 'Select Calendar' }, { required: true } %>
+    <%= form.collection_select :calendar_id, @calendars || Calendar.all, :id, :name, { include_blank: 'Select Calendar' }, { required: true } %>
   </div>
 
   <div>
@@ -36,3 +44,13 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+<script>
+  document.addEventListener("turbolinks:load", function() {
+    var checkbox = document.querySelector("#event_set_reminder");
+    var reminderFields = document.querySelector("#reminder_fields");
+    checkbox.addEventListener("change", function() {
+      reminderFields.style.display = checkbox.checked ? "block" : "none";
+    });
+  });
+</script>

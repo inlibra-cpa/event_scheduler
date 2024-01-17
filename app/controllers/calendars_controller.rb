@@ -8,6 +8,10 @@ class CalendarsController < ApplicationController
 
   # GET /calendars/1 or /calendars/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @event }
+    end
   end
 
   # GET /calendars/new
